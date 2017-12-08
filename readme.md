@@ -1,8 +1,7 @@
-# Text Classification with Keras and TensorFlow ported to python3
+# Text Classification with Keras and TensorFlow for Python3.6
 
-## The original model was located here and only ran for python2
-Blog post is [here](https://vgpena.github.io/classifying-tweets-with-keras-and-tensorflow/)
-
+### References
+Original methodology located at this [blog post](https://vgpena.github.io/classifying-tweets-with-keras-and-tensorflow/). Only worked on Python2
 
 Data can be downloaded [here](http://thinknook.com/twitter-sentiment-analysis-training-corpus-dataset-2012-09-22/). Many thanks to ThinkNook for putting such a great resource out there.
 
