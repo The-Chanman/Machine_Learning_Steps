@@ -78,3 +78,5 @@ with open('model.json', 'w') as json_file:
 model.save_weights('model.h5')
 
 print('saved model!')
+
+model.save('fullModel.h5')

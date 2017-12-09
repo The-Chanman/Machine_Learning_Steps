@@ -7,7 +7,7 @@ Data can be downloaded [here](http://thinknook.com/twitter-sentiment-analysis-tr
 
 ## Installation
 
-You need Python 3 to run this project;
+You need Python 3 to run this project.
 
 ### Training
 When creating the net finishes, three new files should have been created: `dictionary.json`, `model.json`, and `model.h5`. You will need these to use the net.
