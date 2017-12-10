@@ -25,8 +25,21 @@
     model.ready()
       .then(() =>{
         console.log("YOU HAVE SUCCESSFULLY LOADED THE AI MODEL INTO A BROWSER!!!")
-        
+        var inputData = {
+          'input': new Float32Array(data)
+        };
+        console.log("inputdata: " + inputData);
+        return model.predict(inputData);
       })
+      .then(function(outputData) {
+        // outputData is an object keyed by names of the output layers
+
+        console.log("Output Data " + outputData);
+      })
+      .catch(function(err) {
+        console.log(err);
+        // handle error
+      });
   </script>
   </body>
 </html>

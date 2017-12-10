@@ -46,7 +46,9 @@ while 1:
 
     # format your input for the neural net
     testArr = convert_text_to_index_array(evalSentence)
+    print(testArr)
     inputToken = tokenizer.sequences_to_matrix([testArr], mode='binary')
+    print(inputToken)
     # predict which bucket your input belongs in
     pred = model.predict(inputToken)
     # and print it for the humons
