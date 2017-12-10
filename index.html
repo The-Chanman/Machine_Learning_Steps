@@ -54,10 +54,9 @@
       .then(() =>{
         console.log("YOU HAVE SUCCESSFULLY LOADED THE AI MODEL INTO A BROWSER!!!")
         var data = "Hello"
-        var inputData = {
-          'input': new Float32Array(data)
-        };
-        console.log("inputdata: " + inputData);
+        data = text_to_word_sequence(data);
+        console.log("inputdata: " + data);
+        sequences_to_matrix(data);
         return model.predict(inputData);
       })
       .then(function(outputData) {
