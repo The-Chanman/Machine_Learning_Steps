@@ -16,6 +16,7 @@
     </div>
   </section>
   <script src="dist/keras.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/numjs/0.15.1/numjs.js"></script>
   <script>
     // Will remove all falsy values: undefined, null, 0, false, NaN and "" (empty string)
     function cleanArray(actual) {
@@ -37,6 +38,10 @@
       var seq = cleanedString.split(split);
       var cleanSeq = cleanArray(seq);
       return cleanSeq;
+    }
+
+    function sequences_to_matrix(sequences) {
+      var x =
     }
   </script>
   <script>
