@@ -54,10 +54,10 @@
       .then(() =>{
         console.log("YOU HAVE SUCCESSFULLY LOADED THE AI MODEL INTO A BROWSER!!!")
         var data = "Hello"
-        data = text_to_word_sequence(data);
-        console.log("inputdata: " + data);
-        sequences_to_matrix(data);
-        return model.predict(inputData);
+        var tokenizedData = text_to_word_sequence(data);
+        console.log("inputdata: " + tokenizedData);
+        sequences_to_matrix(tokenizedData);
+        return model.predict(tokenizedData);
       })
       .then(function(outputData) {
         // outputData is an object keyed by names of the output layers
