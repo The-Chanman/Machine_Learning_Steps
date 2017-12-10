@@ -17,6 +17,29 @@
   </section>
   <script src="dist/keras.min.js"></script>
   <script>
+    // Will remove all falsy values: undefined, null, 0, false, NaN and "" (empty string)
+    function cleanArray(actual) {
+      var newArray = new Array();
+      for (var i = 0; i < actual.length; i++) {
+        if (actual[i]) {
+          newArray.push(actual[i]);
+        }
+      }
+      return newArray;
+    }
+
+    function text_to_word_sequence(text, lower = true, split=" ") {
+      if (lower) {
+        text = text.toLowerCase();
+      }
+      // replacing all charset
+      var cleanedString = text.replace(/[!"#$%&()*+,-./:;<=>?@[\\\]^_`{|}~\n\t]/g, " ");
+      var seq = cleanedString.split(split);
+      var cleanSeq = cleanArray(seq);
+      return cleanSeq;
+    }
+  </script>
+  <script>
     const model = new KerasJS.Model({
       filepath: './keras_js/fullModel.bin',
        gpu: true,
@@ -25,7 +48,7 @@
     model.ready()
       .then(() =>{
         console.log("YOU HAVE SUCCESSFULLY LOADED THE AI MODEL INTO A BROWSER!!!")
-        var data = "Hello" 
+        var data = "Hello"
         var inputData = {
           'input': new Float32Array(data)
         };
