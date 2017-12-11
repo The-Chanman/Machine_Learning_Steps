@@ -209,7 +209,6 @@ d3.json("./src/evaluatedDict.json", function(error, data) {
   data = data.data
   data.forEach(function(d) {
     d.text = d.text;
-    console.log(d.text)
     d["sentiment"]= +d["sentiment"];
     d["confidence"] = +d["confidence"];
     d["message_num"] = +d["message_num"];
@@ -217,7 +216,7 @@ d3.json("./src/evaluatedDict.json", function(error, data) {
   console.log(data)
 
   // scale the range of the data
-  x.domain([0, data.data.length]);
+  x.domain([0, data.length]);
   y.domain([0, d3.max(data, function(d) { return d.confidence; })]);
 
   // add axis
