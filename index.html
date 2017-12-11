@@ -41,14 +41,7 @@
       return cleanSeq;
     }
 
-    // read in our saved dictionary
-    var dictionary = {};
-    $.getJSON( "src/dictionary.json", function( data ) {
-      dictionary = data;
-      console.log(dictionary);
-    });
-
-    function map_to_dict(sequence) {
+    function map_to_dict(sequence, dictionary) {
       let indices = sequence.map(word => {
         const index = dictionary[word];
       })
@@ -76,14 +69,19 @@
       .then(() =>{
         console.log("YOU HAVE SUCCESSFULLY LOADED THE AI MODEL INTO A BROWSER!!!")
         var data = "Hello this is a sample test"
-        var tokenizedData = text_to_word_sequence(data);
-        var dictBasedIndices = map_to_dict(tokenizedData);
-        console.log("inputdata: " + tokenizedData);
-        var matrixToPredict = sequences_to_matrix(dictBasedIndices);
-        var inputData = {
-          'input': matrixToPredict
-        };
-        return model.predict(inputData);
+        var tokenizedData = text_to_word_sequence(data);    // read in our saved dictionary
+        var dictionary = {};
+        $.getJSON( "src/dictionary.json", function( data ) {
+          dictionary = data;
+          console.log(dictionary);
+          var dictBasedIndices = map_to_dict(tokenizedData, dictionary);
+          console.log("inputdata: " + tokenizedData);
+          var matrixToPredict = sequences_to_matrix(dictBasedIndices);
+          var inputData = {
+            'input': matrixToPredict
+          };
+          return model.predict(inputData);
+        });
       })
       .then(function(outputData) {
         // outputData is an object keyed by names of the output layers
