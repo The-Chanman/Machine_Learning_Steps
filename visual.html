@@ -246,7 +246,7 @@ d3.json("./src/evaluatedDict.json", function(error, data) {
 
               var draw_line = d3.svg.line()
                   .interpolate("basis")
-                  .x(function(d) { return x_scale(d[0]); });
+                  .x(function(d) { return x_scale(d); });
 
               var svg = d3.select(this)
                   .attr("width", width)
@@ -294,9 +294,9 @@ d3.json("./src/evaluatedDict.json", function(error, data) {
                   .attr("stroke", function(_, i) {return color_scale(i);}) ;
 
               data_lines.append("text")
-                  .datum(function(d, i) { return {name: datasets[i].label, final: d[d.length-1]}; })
+                  .datum(function(d, i) { return {name: datasets[i].label, final: d}; })
                   .attr("transform", function(d) {
-                      return ( "translate(" + x_scale(d.final[0]) + ")" ) ; })
+                      return ( "translate(" + x_scale(d.final) + ")" ) ; })
                   .attr("x", 3)
                   .attr("dy", ".35em")
                   .attr("fill", function(_, i) { return color_scale(i); })
