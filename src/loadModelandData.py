@@ -39,7 +39,7 @@ model.load_weights('model.h5')
 # model.save('FullModel.hdf5')
 # okay here's the interactive part
 evaluatedData = open('evaluatedData.txt', 'w')
-evaluatedDictionary = {}
+evaluatedDictionary = {"data": []}
 count = 0
 toEval = open('.\dataToEval.txt')
 file_content = toEval.readlines()
@@ -58,11 +58,11 @@ for line in file_content:
     print("%s sentiment; %f%% confidence" % (labels[np.argmax(pred)], pred[0][np.argmax(pred)] * 100))
     evalSentence = ""
     evaluatedData.write(labels[np.argmax(pred)] + " sentiment with " +  str(pred[0][np.argmax(pred)] * 100) + " confidence for: " + line)
-    evaluatedDictionary.update({count:{"text": line, "sentiment": labels[np.argmax(pred)], "confidence": pred[0][np.argmax(pred)] * 100}})
+    evaluatedDictionary["data"].append({"text": line, "sentiment": labels[np.argmax(pred)], "confidence": pred[0][np.argmax(pred)] * 100})
     count +=1
 
 # print(evaluatedDictionary)
-with open('evaluatedDict.txt', 'w') as outfile:
+with open('evaluatedDict.json', 'w') as outfile:
     json.dump(evaluatedDictionary, outfile)
 toEval.close()
 evaluatedData.close()
