@@ -16,6 +16,7 @@
     </div>
   </section>
   <script src="dist/keras.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/numjs/0.15.1/numjs.js"></script>
   <script>
     // Will remove all falsy values: undefined, null, 0, false, NaN and "" (empty string)
     function cleanArray(actual) {
@@ -38,6 +39,11 @@
       var cleanSeq = cleanArray(seq);
       return cleanSeq;
     }
+
+    function sequences_to_matrix(sequences) {
+      var num_words = sequences.length;
+
+    }
   </script>
   <script>
     const model = new KerasJS.Model({
@@ -48,12 +54,11 @@
     model.ready()
       .then(() =>{
         console.log("YOU HAVE SUCCESSFULLY LOADED THE AI MODEL INTO A BROWSER!!!")
-        var data = "Hello"
-        var inputData = {
-          'input': new Float32Array(data)
-        };
-        console.log("inputdata: " + inputData);
-        return model.predict(inputData);
+        var data = "Hello this is a sample test"
+        var tokenizedData = text_to_word_sequence(data);
+        console.log("inputdata: " + tokenizedData);
+        sequences_to_matrix(tokenizedData);
+        return model.predict(tokenizedData);
       })
       .then(function(outputData) {
         // outputData is an object keyed by names of the output layers
