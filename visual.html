@@ -211,6 +211,7 @@ d3.json("./src/evaluatedDict.json", function(error, data) {
     d.text = d.text;
     d["sentiment"]= +d["sentiment"];
     d["confidence"] = +d["confidence"];
+    d["message_num"] = +d["message_num"];
   });
   console.log(data)
 
@@ -237,7 +238,7 @@ d3.json("./src/evaluatedDict.json", function(error, data) {
       .attr("y", 5)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Frequency");
+      .text("Confidence");
 
 
   // Add bar chart
@@ -245,10 +246,10 @@ d3.json("./src/evaluatedDict.json", function(error, data) {
       .data(data)
     .enter().append("rect")
       .attr("class", "bar")
-      .attr("x", function(d) { return x(d.Letter); })
+      .attr("x", function(d) { return x(d.message_num); })
       .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.Freq); })
-      .attr("height", function(d) { return height - y(d.Freq); });
+      .attr("y", function(d) { return y(d.confidence); })
+      .attr("height", function(d) { return height - y(d.confidence); });
 
 });
 

@@ -58,7 +58,7 @@ for line in file_content:
     print("%s sentiment; %f%% confidence" % (labels[np.argmax(pred)], pred[0][np.argmax(pred)] * 100))
     evalSentence = ""
     evaluatedData.write(labels[np.argmax(pred)] + " sentiment with " +  str(pred[0][np.argmax(pred)] * 100) + " confidence for: " + line)
-    evaluatedDictionary["data"].append({"text": line, "sentiment": labels[np.argmax(pred)], "confidence": pred[0][np.argmax(pred)] * 100})
+    evaluatedDictionary["data"].append({"text": line, "sentiment": labels[np.argmax(pred)], "confidence": pred[0][np.argmax(pred)] * 100, "message_num": count})
     count +=1
 
 # print(evaluatedDictionary)
