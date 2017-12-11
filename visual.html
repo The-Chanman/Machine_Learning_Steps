@@ -206,8 +206,8 @@ var svg = d3.select("body").append("svg")
 // load the data
 d3.json("./src/evaluatedDict.json", function(error, data) {
   if (error) throw error;
-
-  data.data.forEach(function(d) {
+  data = data.data
+  data.forEach(function(d) {
     d.text = d.text;
     console.log(d.text)
     d["sentiment"]= +d["sentiment"];
@@ -218,7 +218,7 @@ d3.json("./src/evaluatedDict.json", function(error, data) {
 
   // scale the range of the data
   x.domain([0, data.data.length]);
-  y.domain([0, d3.max(data, function(d) { return data.d.confidence; })]);
+  y.domain([0, d3.max(data, function(d) { return d.confidence; })]);
 
   // add axis
   svg.append("g")
@@ -247,10 +247,10 @@ d3.json("./src/evaluatedDict.json", function(error, data) {
       .data(data)
     .enter().append("rect")
       .attr("class", "bar")
-      .attr("x", function(d) { return x(d.data.message_num); })
+      .attr("x", function(d) { return x(d.message_num); })
       .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.data.confidence); })
-      .attr("height", function(d) { return height - y(d.data.confidence); });
+      .attr("y", function(d) { return y(d.confidence); })
+      .attr("height", function(d) { return height - y(d.confidence); });
 
 });
 
