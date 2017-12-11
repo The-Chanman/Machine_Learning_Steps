@@ -45,7 +45,6 @@
       let indices = sequence.map(word => {
         const index = dictionary[word];
       })
-      console.log(indices);
       return indices;
     }
 
@@ -76,7 +75,9 @@
           console.log(dictionary);
           var dictBasedIndices = map_to_dict(tokenizedData, dictionary);
           console.log("inputdata: " + tokenizedData);
+          console.log(dictBasedIndices);
           var matrixToPredict = sequences_to_matrix(dictBasedIndices);
+          console.log(matrixToPredict);
           var inputData = {
             'input': matrixToPredict
           };
