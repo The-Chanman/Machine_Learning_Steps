@@ -46,7 +46,7 @@
     $.getJSON( "src/dictionary.json", function( data ) {
       dictionary = data;
       console.log(dictionary);
-    }
+    });
 
     function map_to_dict(sequence) {
       let indices = sequence.map(word => {
