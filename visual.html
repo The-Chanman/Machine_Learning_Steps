@@ -142,7 +142,12 @@ d3.json("./src/evaluatedDict.json", function(error, data) {
   .bar{
     fill: steelblue;
   }
-
+  .positive{
+    fill: green;
+  }
+  .negative{
+    fill: red;
+  }
   .bar:hover{
     fill: brown;
   }
@@ -163,7 +168,7 @@ d3.json("./src/evaluatedDict.json", function(error, data) {
 
 <body>
 
-<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
 
 <script>
 // set the dimensions of the canvas
