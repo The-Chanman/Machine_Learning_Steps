@@ -284,7 +284,10 @@ d3.json("./src/evaluatedDict.json", function(error, data) {
                   .text(ylabel) ;
 
               var data_lines = svg.selectAll(".d3_xy_chart_line")
-                  .data(datasets.map(function(d) {return d3.zip(d.message_num, d.confidence);}))
+                  .data(datasets.map(function(d) {
+                    console.log(d);
+                    return d3.zip(d.message_num, d.confidence);
+                  }))
                   .enter().append("g")
                   .attr("class", "d3_xy_chart_line") ;
 

@@ -53,4 +53,6 @@ while 1:
     pred = model.predict(inputToken)
     # and print it for the humons
     print("%s sentiment; %f%% confidence" % (labels[np.argmax(pred)], pred[0][np.argmax(pred)] * 100))
+    print(pred)
+    print(np.argmax(pred))
     evalSentence = ""
