@@ -48,7 +48,7 @@ while 1:
     testArr = convert_text_to_index_array(evalSentence)
     print(testArr)
     inputToken = tokenizer.sequences_to_matrix([testArr], mode='binary')
-    print(inputToken)
+    print(inputToken[0])
     # predict which bucket your input belongs in
     pred = model.predict(inputToken)
     # and print it for the humons

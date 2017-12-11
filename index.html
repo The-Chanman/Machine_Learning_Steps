@@ -41,8 +41,23 @@
     }
 
     function sequences_to_matrix(sequences) {
-      var num_words = sequences.length;
 
+      var oneHot = [];
+      var num_words = sequences.length;
+      for (i = 0; i < num_words; i ++){
+        var tempString = "";
+        for (j = 0; j < 3000; j ++){
+          if (j+1 == sequences[i]){
+            tempString += 1;
+          }
+          else {
+            tempString += 0;
+          }
+        }
+        var tempArray = tempString.split("");
+        oneHot.push(tempArray);
+      }
+      return oneHot;
     }
   </script>
   <script>
@@ -57,8 +72,8 @@
         var data = "Hello this is a sample test"
         var tokenizedData = text_to_word_sequence(data);
         console.log("inputdata: " + tokenizedData);
-        sequences_to_matrix(tokenizedData);
-        return model.predict(tokenizedData);
+        var matrixToPredict = sequences_to_matrix(tokenizedData);
+        return model.predict(matrixToPredict);
       })
       .then(function(outputData) {
         // outputData is an object keyed by names of the output layers
