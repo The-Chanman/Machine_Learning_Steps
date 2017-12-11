@@ -182,7 +182,7 @@ d3.json("./src/evaluatedDict.json", function(error, data) {
   data = data.data
   data.forEach(function(d) {
     d.text = d.text;
-    d["sentiment"]= +d["sentiment"];
+    d.sentiment= d.sentiment;
     d["confidence"] = +d["confidence"];
     d["message_num"] = +d["message_num"];
   });

@@ -73,7 +73,10 @@
         var tokenizedData = text_to_word_sequence(data);
         console.log("inputdata: " + tokenizedData);
         var matrixToPredict = sequences_to_matrix(tokenizedData);
-        return model.predict(matrixToPredict);
+        var inputData = {
+          'input': matrixToPredict
+        };
+        return model.predict(inputData);
       })
       .then(function(outputData) {
         // outputData is an object keyed by names of the output layers
