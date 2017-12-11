@@ -71,7 +71,7 @@
       .then(function(outputData) {
         // outputData is an object keyed by names of the output layers
 
-        console.log("Output Data " + outputData);
+        console.log("Output Data " + JSON.stringify(outputData));
       })
       .catch(function(err) {
         console.log(err);
