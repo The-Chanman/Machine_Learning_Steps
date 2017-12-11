@@ -41,23 +41,13 @@
     }
 
     function sequences_to_matrix(sequences) {
-
-      var oneHot = [];
-      var num_words = sequences.length;
-      for (i = 0; i < num_words; i ++){
-        var tempString = "";
-        for (j = 0; j < 3000; j ++){
-          if (j+1 == sequences[i]){
-            tempString += 1;
-          }
-          else {
-            tempString += 0;
-          }
+      var oneHot = new Float32Array(3000);
+      for (i = 0; i < sequences.length; i++){
+        if (sequences[i] < 3000){
+          oneHot[sequences[i]] = 1.0
         }
-        var tempArray = tempString.split("");
-        oneHot.push(tempArray);
       }
-      return oneHot;
+      return [oneHot];
     }
   </script>
   <script>
