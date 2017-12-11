@@ -17,6 +17,7 @@
   </section>
   <script src="dist/keras.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/numjs/0.15.1/numjs.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
     // Will remove all falsy values: undefined, null, 0, false, NaN and "" (empty string)
     function cleanArray(actual) {
@@ -40,6 +41,21 @@
       return cleanSeq;
     }
 
+    // read in our saved dictionary
+    var dictionary = {};
+    $.getJSON( "src/dictionary.json", function( data ) {
+      dictionary = data;
+      console.log(dictionary);
+    }
+
+    function map_to_dict(sequence) {
+      let indices = sequence.map(word => {
+        const index = dictionary[word];
+      })
+      console.log(indices);
+      return indices;
+    }
+
     function sequences_to_matrix(sequences) {
       var oneHot = new Float32Array(3000);
       for (i = 0; i < sequences.length; i++){
@@ -61,8 +77,9 @@
         console.log("YOU HAVE SUCCESSFULLY LOADED THE AI MODEL INTO A BROWSER!!!")
         var data = "Hello this is a sample test"
         var tokenizedData = text_to_word_sequence(data);
+        var dictBasedIndices = map_to_dict(tokenizedData);
         console.log("inputdata: " + tokenizedData);
-        var matrixToPredict = sequences_to_matrix(tokenizedData);
+        var matrixToPredict = sequences_to_matrix(dictBasedIndices);
         var inputData = {
           'input': matrixToPredict
         };
